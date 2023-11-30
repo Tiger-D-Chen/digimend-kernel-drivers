@@ -1,4 +1,4 @@
-DIGImend kernel drivers
+DIGImend kernel drivers for HUION and GAOMON devices
 =======================
 
 [![Travis CI Build Status][travis_ci_badge]][travis_ci_page]
@@ -8,8 +8,6 @@ and maintained by the DIGImend project. We maintain this package to provide
 newer drivers for older kernel versions which don't have them, and to allow
 users to test new drivers before we contribute them to the mainline kernel.
 
-See the [list of supported tablets][supported_tablets] on the [project
-website][website].
 
 Installing
 ----------

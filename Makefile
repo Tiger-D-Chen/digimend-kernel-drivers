@@ -1,6 +1,6 @@
-obj-m := hid-kye.o hid-uclogic.o hid-polostar.o hid-viewsonic.o
-hid-uclogic-objs := \
-	hid-uclogic-core.o \
+obj-m := hid-kye.o hid-huion.o hid-polostar.o hid-viewsonic.o
+hid-huion-objs := \
+	hid-huion-core.o \
 	hid-uclogic-rdesc.o \
 	hid-uclogic-params.o
 KVERSION := $(shell uname -r)
@@ -15,7 +15,7 @@ HID_REBIND = $(DESTDIR)/lib/udev/hid-rebind
 DIGIMEND_DEBUG = $(DESTDIR)/usr/sbin/digimend-debug
 XORG_CONF := $(DESTDIR)/usr/share/X11/xorg.conf.d/50-digimend.conf
 PACKAGE_NAME = digimend-kernel-drivers
-PACKAGE_VERSION = 11
+PACKAGE_VERSION = 12
 PACKAGE = $(PACKAGE_NAME)-$(PACKAGE_VERSION)
 DKMS_MODULES_NAME = digimend
 DKMS_MODULES = $(DKMS_MODULES_NAME)/$(PACKAGE_VERSION)
@@ -74,7 +74,7 @@ udev_rules_uninstall: udev_rules_uninstall_files
 modules_uninstall:
 	rm -vf /lib/modules/*/extra/hid-kye.ko \
 	       /lib/modules/*/extra/hid-polostar.ko \
-	       /lib/modules/*/extra/hid-uclogic.ko \
+	       /lib/modules/*/extra/hid-huion.ko \
 	       /lib/modules/*/extra/hid-viewsonic.ko
 
 install: modules modules_install depmod_conf_install dracut_conf_install udev_rules_install xorg_conf_install tools_install

@@ -72,7 +72,7 @@ static void uclogic_inrange_timeout(struct timer_list *t)
 	input_sync(input);
 }
 
-static __u8 *uclogic_report_fixup(struct hid_device *hdev, __u8 *rdesc,
+static __u8 *huion_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 					unsigned int *rsize)
 {
 	struct uclogic_drvdata *drvdata = hid_get_drvdata(hdev);
@@ -84,7 +84,7 @@ static __u8 *uclogic_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 	return rdesc;
 }
 
-static int uclogic_input_mapping(struct hid_device *hdev,
+static int huion_input_mapping(struct hid_device *hdev,
 				 struct hid_input *hi,
 				 struct hid_field *field,
 				 struct hid_usage *usage,
@@ -104,11 +104,11 @@ static int uclogic_input_mapping(struct hid_device *hdev,
 
 #if KERNEL_VERSION(4, 4, 0) > LINUX_VERSION_CODE
 #define RETURN_SUCCESS return
-static void uclogic_input_configured(struct hid_device *hdev,
+static void huion_input_configured(struct hid_device *hdev,
 		struct hid_input *hi)
 #else
 #define RETURN_SUCCESS return 0
-static int uclogic_input_configured(struct hid_device *hdev,
+static int huion_input_configured(struct hid_device *hdev,
 		struct hid_input *hi)
 #endif
 {
@@ -187,7 +187,7 @@ static int uclogic_input_configured(struct hid_device *hdev,
 #undef RETURN_SUCCESS
 
 
-static int uclogic_probe(struct hid_device *hdev,
+static int huion_probe(struct hid_device *hdev,
 		const struct hid_device_id *id)
 {
 	int rc;
@@ -260,7 +260,7 @@ failure:
 }
 
 #ifdef CONFIG_PM
-static int uclogic_resume(struct hid_device *hdev)
+static int huion_resume(struct hid_device *hdev)
 {
 	int rc;
 	struct uclogic_params params;
@@ -419,7 +419,7 @@ static int uclogic_raw_event_frame(
 	return 0;
 }
 
-static int uclogic_raw_event(struct hid_device *hdev,
+static int huion_raw_event(struct hid_device *hdev,
 				struct hid_report *report,
 				u8 *data, int size)
 {
@@ -473,7 +473,7 @@ static int uclogic_raw_event(struct hid_device *hdev,
 	return 0;
 }
 
-static void uclogic_remove(struct hid_device *hdev)
+static void huion_remove(struct hid_device *hdev)
 {
 	struct uclogic_drvdata *drvdata = hid_get_drvdata(hdev);
 
@@ -483,7 +483,7 @@ static void uclogic_remove(struct hid_device *hdev)
 	uclogic_params_cleanup(&drvdata->params);
 }
 
-static const struct hid_device_id uclogic_devices[] = {
+static const struct hid_device_id huion_devices[] = {
 	{ HID_USB_DEVICE(USB_VENDOR_ID_UCLOGIC,
 				USB_DEVICE_ID_UCLOGIC_TABLET_PF1209) },
 	{ HID_USB_DEVICE(USB_VENDOR_ID_UCLOGIC,
@@ -502,6 +502,98 @@ static const struct hid_device_id uclogic_devices[] = {
 				USB_DEVICE_ID_HUION_TABLET) },
 	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
 				USB_DEVICE_ID_HUION_TABLET2) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET3) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET4) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET5) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET6) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET7) },	
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET8) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET9) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET10) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET11) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET12) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET13) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET14) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET15) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET16) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET17) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET18) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET19) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET20) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET21) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET22) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET23) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET24) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET25) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET26) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET27) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET28) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET29) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET30) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET31) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET32) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET33) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET34) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET35) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET36) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET37) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET38) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET39) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET40) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET41) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET42) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET43) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET44) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET45) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET46) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET47) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_HUION,
+				USB_DEVICE_ID_HUION_TABLET48) },
 	{ HID_USB_DEVICE(USB_VENDOR_ID_TRUST,
 				USB_DEVICE_ID_TRUST_PANORA_TABLET) },
 	{ HID_USB_DEVICE(USB_VENDOR_ID_UCLOGIC,
@@ -538,25 +630,25 @@ static const struct hid_device_id uclogic_devices[] = {
 				USB_DEVICE_ID_UGEE_XPPEN_TABLET_STAR06) },
 	{ }
 };
-MODULE_DEVICE_TABLE(hid, uclogic_devices);
+MODULE_DEVICE_TABLE(hid, huion_devices);
 
-static struct hid_driver uclogic_driver = {
-	.name = "uclogic",
-	.id_table = uclogic_devices,
-	.probe = uclogic_probe,
-	.remove = uclogic_remove,
-	.report_fixup = uclogic_report_fixup,
-	.raw_event = uclogic_raw_event,
-	.input_mapping = uclogic_input_mapping,
-	.input_configured = uclogic_input_configured,
+static struct hid_driver huion_driver = {
+	.name = "huion",
+	.id_table = huion_devices,
+	.probe = huion_probe,
+	.remove = huion_remove,
+	.report_fixup = huion_report_fixup,
+	.raw_event = huion_raw_event,
+	.input_mapping = huion_input_mapping,
+	.input_configured = huion_input_configured,
 #ifdef CONFIG_PM
-	.resume	          = uclogic_resume,
-	.reset_resume     = uclogic_resume,
+	.resume	          = huion_resume,
+	.reset_resume     = huion_resume,
 #endif
 };
-module_hid_driver(uclogic_driver);
+module_hid_driver(huion_driver);
 
 MODULE_AUTHOR("Martin Rusko");
 MODULE_AUTHOR("Nikolai Kondrashov");
 MODULE_LICENSE("GPL");
-MODULE_VERSION("11");
+MODULE_VERSION("12");
