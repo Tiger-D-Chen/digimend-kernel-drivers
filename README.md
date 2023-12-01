@@ -14,18 +14,6 @@ Installing
 
 Kernel v3.5 or newer is required.
 
-Download appropriate files for one of the releases from the [releases
-page][releases]. The "Download ZIP" link on the right of the GitHub page leads
-to the source of the current development version, use it only if you know what
-you're doing.
-
-### Installing Debian package ###
-
-If you're using Debian or a derived distro, such as Ubuntu, and are installing
-a release, please use the .deb package. If you're not using a Debian-based
-distro, or the .deb package didn't work, you can install the driver using
-DKMS, or manually, as described below.
-
 ### Installing from source ###
 
 Source is either an unpacked release tarball (.tar.gz file), an unpacked
@@ -93,7 +81,7 @@ attempts to cryptographically sign the modules being installed. Most of the
 users don't have the system configured to support this, so during the
 installation they get error messages similar to these:
 
-      INSTALL /home/danghai/digimend-kernel-drivers/hid-uclogic.ko
+      INSTALL /home/danghai/digimend-kernel-drivers/hid-huion.ko
     At main.c:160:
     - SSL error:02001002:system library:fopen:No such file or directory: bss_file.c:175
     - SSL error:2006D080:BIO routines:BIO_new_file:no such file: bss_file.c:178
@@ -111,7 +99,7 @@ After installing the drivers, make sure the previous versions of the drivers
 were unloaded. To do that, simply reboot the machine. Alternatively, execute
 the following command:
 
-    sudo modprobe -r hid-kye hid-uclogic hid-polostar hid-viewsonic
+    sudo modprobe -r hid-kye hid-huion hid-polostar hid-viewsonic
 
 and reconnect the tablet.
 
@@ -258,17 +246,17 @@ installing.
 
 They make DKMS produce messages like this:
 
-    hid-uclogic.ko:
+    hid-huion.ko:
     Running module version sanity check.
-    Error! Module version 7 for hid-uclogic.ko
+    Error! Module version 7 for hid-huion.ko
     is not newer than what is already found in kernel 4.9.0-5-amd64 (7).
     You may override by specifying --force.
 
 or this:
 
-    hid-uclogic.ko.xz:
+    hid-huion.ko.xz:
     Running module version sanity check.
-    Error! Module version 9 for hid-uclogic.ko.xz
+    Error! Module version 9 for hid-huion.ko.xz
     is not newer than what is already found in kernel 3.10.0-862.14.4.el7.x86_64 (27A2028780DCB320780F53D).
 
 while trying to install the drivers.
